@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/App.css";
 import Login from "./Login";
 import Navbar from "./Navbar";
@@ -8,6 +8,7 @@ import StatsContainer from "./StatsContainer";
 
 function App() {
   const [userID, setUserID] = useState("");
+  const [userView, setUserView] = useState("");
 
   return (
     <div className="App">
@@ -15,10 +16,10 @@ function App() {
         <Login setUserID={setUserID} />
       ) : (
         <section>
-          <Navbar />
-          <MapContainer />
-          <BattleContainer userID={userID} />
-          <StatsContainer userID={userID} />
+          <Navbar setUserView={setUserView} />
+          {userView === "Map" && <MapContainer />}
+          {userView === "Battle" && <BattleContainer />}
+          {userView === "Stats" && <StatsContainer />}
         </section>
       )}
     </div>

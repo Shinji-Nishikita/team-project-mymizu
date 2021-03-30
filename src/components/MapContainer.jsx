@@ -1,6 +1,7 @@
+import React from "react";
 import "../styles/MapContainer.css";
 
-function MapContainer() {
+function MapContainer(props) {
   return <section className="MapContainer">MapContainer </section>;
 }
 
