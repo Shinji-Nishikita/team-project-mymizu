@@ -7,15 +7,21 @@ import BattleContainer from "./BattleContainer";
 import StatsContainer from "./StatsContainer";
 
 function App() {
+  const [userID, setUserID] = useState("");
   const [userView, setUserView] = useState("");
+
   return (
     <div className="App">
-      <Login />
-      {console.log(userView)}
-      <Navbar setUserView={setUserView} />
-      {userView === "Map" && <MapContainer />}
-      {userView === "Battle" && <BattleContainer />}
-      {userView === "Stats" && <StatsContainer />}
+      {userID === "" ? (
+        <Login setUserID={setUserID} />
+      ) : (
+        <section>
+          <Navbar setUserView={setUserView} />
+          {userView === "Map" && <MapContainer />}
+          {userView === "Battle" && <BattleContainer />}
+          {userView === "Stats" && <StatsContainer />}
+        </section>
+      )}
     </div>
   );
 }
