@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "../styles/BattleContainer.css";
 import MonsterTracker from "./MonsterTracker";
 import Monster from "./Monster";
@@ -9,20 +10,21 @@ function BattleContainer() {
 
   //when onclick in attackContainer
 
+  const [numAlive, setNumAlive] = useState();
+  const [numDead, setNumDead] = useState();
 
   return (
     <section className="BattleContainer">
       battle container
       {view === "battle" &&
-        <>
-          <MonsterTracker />
+        <section>
+          <MonsterTracker numAlive={numAlive} numDead={numDead} />
           <Monster />
-          <AttackContainer view={view} setView={setView} />
-        </>
+          <AttackContainer />
+        </section>
       }
       {view === "victory" &&
-        <VictoryScreen setView={setView} />
-      }
+        <VictoryScreen setView={setView} />}
     </section>
   );
 }
