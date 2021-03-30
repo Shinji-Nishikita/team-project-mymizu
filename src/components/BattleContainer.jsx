@@ -7,9 +7,6 @@ import VictoryScreen from "./VictoryScreen";
 
 function BattleContainer() {
   const [view, setView] = useState("battle");
-
-  //when onclick in attackContainer
-
   const [numAlive, setNumAlive] = useState();
   const [numDead, setNumDead] = useState();
 
