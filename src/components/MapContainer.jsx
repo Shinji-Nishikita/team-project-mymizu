@@ -43,7 +43,7 @@ function MapContainer({ user }) {
     const temp = [];
     if (pins.length === 0) return;
     for (let pinInfo of pins.taps) {
-      console.log(pinInfo)
+      // console.log(pinInfo)
       temp.push(
         <Pin pinInfo={pinInfo} lat={pinInfo.latitude} lng={pinInfo.longitude} key={pinInfo.name}/>
       );
@@ -51,10 +51,16 @@ function MapContainer({ user }) {
     setPinComp(temp);
   }, [pins]);
 
+  function handleScroll(e){
+    console.log('working');
+    console.log(e.center)
+    setCurrentLoc(e.center)
+  }
+
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       {currLoc.lat && (
-        <GoogleMapReact defaultCenter={currLoc} defaultZoom={17}>
+        <GoogleMapReact defaultCenter={currLoc} defaultZoom={17} onChange={handleScroll}>
           {pinComp}
         </GoogleMapReact>
       )}
