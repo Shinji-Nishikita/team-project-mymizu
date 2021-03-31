@@ -10,7 +10,7 @@ function Login(props) {
     const req = await axios.post(process.env.REACT_APP_URL + "/login", {
       username: user,
     });
-    console.log(req);
+    // console.log(req);
     props.setUserID(user);
   };
   return (
