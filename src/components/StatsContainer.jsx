@@ -6,3 +6,6 @@ function StatsContainer(props) {
 }
 
 export default StatsContainer;
+
+// Refill
+// Battle数
