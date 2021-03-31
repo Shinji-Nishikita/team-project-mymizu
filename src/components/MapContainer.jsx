@@ -1,3 +1,4 @@
+import React from "react";
 import "../styles/MapContainer.css";
 import axios from "axios";
 axios.defaults.headers.common["Authorization"] = process.env.REACT_APP_API_KEY;
