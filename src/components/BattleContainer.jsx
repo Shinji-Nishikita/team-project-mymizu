@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/BattleContainer.css";
 import MonsterTracker from "./MonsterTracker";
-import Monster from "./Monster";
+import MonsterBox from "./MonsterBox";
 import AttackContainer from "./AttackContainer";
 import VictoryScreen from "./VictoryScreen";
 
@@ -40,7 +40,7 @@ function BattleContainer(props) {
         setMonsterHPs(temp);
       }
     }
-  }, [props.userData]);
+  }, [props.userData, monsterHPs]);
 
   useEffect(() => {
     let alive = 0;
@@ -54,11 +54,11 @@ function BattleContainer(props) {
     }
     setNumAlive(alive);
     setNumDead(dead);
-  }, [monsterHPs.length]);
+  }, [monsterHPs]);
 
-  console.log("alive", numAlive, "dead", numDead);
+  // console.log("alive", numAlive, "dead", numDead);
 
-  console.log(monsterHPs);
+  // console.log(monsterHPs);
 
   return (
     <section className="BattleContainer">
@@ -66,7 +66,7 @@ function BattleContainer(props) {
       {view === "battle" && (
         <section>
           <MonsterTracker numAlive={numAlive} numDead={numDead} />
-          <Monster userData={props.userData} />
+          <MonsterBox userData={props.userData} monsterHPs={monsterHPs}/>
           <AttackContainer userData={props.userData} setView={setView} />
         </section>
       )}
