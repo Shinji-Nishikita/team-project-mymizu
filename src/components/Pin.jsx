@@ -9,6 +9,7 @@ export default function Pin({ pinInfo }) {
       <img
         style={{ width: "30px", height: "35px" }}
         src="https://i.ibb.co/q1Y3SpK/oie-jx-XJXNBTAk-Ti.png"
+        alt="logo"
         onClick={() => {
           setClicked(!clicked);
         }}

@@ -17,6 +17,7 @@ function MapContainer({ user }) {
   }
 
   function getPins() {
+    if(!currLoc.lat) return 
     (async function () {
       try {
         const pinsReq = await axios.get(
@@ -33,10 +34,7 @@ function MapContainer({ user }) {
     getPosition();
   }, []);
 
-  useEffect(() => {
-    if(!currLoc.lat) return
-    getPins();
-  }, [currLoc]);
+  useEffect(getPins, [currLoc]);
 
   useEffect(() => {
     if (pins.length === 0) return
@@ -52,15 +50,13 @@ function MapContainer({ user }) {
   }, [pins]);
 
   function handleScroll(e){
-    console.log('working');
-    console.log(e.center)
     setCurrentLoc(e.center)
   }
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       {currLoc.lat && (
-        <GoogleMapReact defaultCenter={currLoc} defaultZoom={17} onChange={handleScroll}>
+        <GoogleMapReact center={currLoc} defaultCenter={{lat:35, lng: -139}} defaultZoom={17} onChange={handleScroll}>
           {pinComp}
         </GoogleMapReact>
       )}
