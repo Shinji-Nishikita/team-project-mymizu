@@ -5,10 +5,24 @@ import Navbar from "./Navbar";
 import MapContainer from "./MapContainer";
 import BattleContainer from "./BattleContainer";
 import StatsContainer from "./StatsContainer";
+import axios from "axios";
 
 function App() {
   const [userID, setUserID] = useState("");
-  const [userView, setUserView] = useState("");
+  const [userView, setUserView] = useState("Battle");
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    async function getInfo() {
+      await axios
+        .get(process.env.REACT_APP_URL + "/user/" + userID)
+        .then((x) => {
+          setUserData(x.data);
+        });
+    }
+    getInfo();
+  }, [userID]);
+  console.log(userData);
 
   return (
     <div className="App">
@@ -18,8 +32,8 @@ function App() {
         <section>
           <Navbar setUserView={setUserView} />
           {userView === "Map" && <MapContainer />}
-          {userView === "Battle" && <BattleContainer />}
-          {userView === "Stats" && <StatsContainer />}
+          {userView === "Battle" && <BattleContainer userData={userData} />}
+          {userView === "Stats" && <StatsContainer userData={userData} />}
         </section>
       )}
     </div>
