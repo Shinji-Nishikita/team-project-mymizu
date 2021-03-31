@@ -8,11 +8,14 @@ import VictoryScreen from "./VictoryScreen";
 function BattleContainer(props) {
   const [view, setView] = useState("battle");
   const [numAlive, setNumAlive] = useState();
-  const [numDead, setNumDead] = useState(0);
+  const [numDead, setNumDead] = useState();
 
   useEffect(() => {
     if (props.userData !== undefined) {
-      setNumAlive(props.userData.level);
+      if (props.userData.monster.maxHP === props.userData.monster.currentHP) {
+        setNumAlive(props.userData.level);
+        setNumDead(0);
+      }
     }
   }, [props.userData]);
 
@@ -22,8 +25,8 @@ function BattleContainer(props) {
       {view === "battle" && (
         <section>
           <MonsterTracker numAlive={numAlive} numDead={numDead} />
-          <Monster />
-          <AttackContainer />
+          <Monster userData={props.userData} />
+          <AttackContainer userData={props.userData} setView={setView} />
         </section>
       )}
       {view === "victory" && <VictoryScreen setView={setView} />}
