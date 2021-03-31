@@ -10,8 +10,8 @@ function MonsterTracker(props) {
     for (let i = 0; i < props.numDead; i++) {
       lifeElems.push(<span className="deathdot" key={i}></span>);
     }
-    for (let i = 0; i < props.numDead; i++) {
-      lifeElems.push(<span className="deathdot" key={i}></span>);
+    for (let i = 0; i < props.numAlive; i++) {
+      lifeElems.push(<span className="lifedot" key={i}></span>);
     }
   }
 

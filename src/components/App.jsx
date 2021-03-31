@@ -13,6 +13,7 @@ function App() {
   const [userData, setUserData] = useState();
 
   useEffect(() => {
+    if(!userID) return
     async function getInfo() {
       await axios
         .get(process.env.REACT_APP_URL + "/user/" + userID)
@@ -22,7 +23,7 @@ function App() {
     }
     getInfo();
   }, [userID]);
-  console.log(userData);
+  // console.log(userData);
 
   return (
     <div className="App">
