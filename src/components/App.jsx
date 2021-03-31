@@ -17,7 +17,7 @@ function App() {
       ) : (
         <section>
           <Navbar setUserView={setUserView} />
-          {userView === "Map" && <MapContainer />}
+          {userView === "Map" && <MapContainer user={userID}/>}
           {userView === "Battle" && <BattleContainer />}
           {userView === "Stats" && <StatsContainer />}
         </section>
