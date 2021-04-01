@@ -21,7 +21,7 @@ function Login(props) {
         onKeyUp={setUser}
       ></input>
       <button className="signIn" onClick={handleSignIn}>
-        <p>Tap to start 🎮</p>
+        Tap to start 🎮
       </button>
     </section>
   );

@@ -4,9 +4,9 @@ import "../styles/Navbar.css";
 function Navbar(props) {
   return (
     <header className="Nav">
-      <button onClick={() => props.setUserView("Map")}>Map</button>
-      <button onClick={() => props.setUserView("Battle")}>Battle</button>
-      <button onClick={() => props.setUserView("Stats")}>Stats</button>
+      <button className="navbutton" onClick={() => props.setUserView("Map")}>Map</button>
+      <button className="navbutton" onClick={() => props.setUserView("Battle")}>Battle</button>
+      <button className="navbutton" onClick={() => props.setUserView("Stats")}>Stats</button>
     </header>
   );
 }
