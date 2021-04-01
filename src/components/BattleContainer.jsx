@@ -6,14 +6,14 @@ import AttackContainer from "./AttackContainer";
 import VictoryScreen from "./VictoryScreen";
 
 function BattleContainer(props) {
-  const [view, setView] = useState();
+  const [view, setView] = useState("battle");
   const [numAlive, setNumAlive] = useState();
   const [numDead, setNumDead] = useState();
   const [monsterHPs, setMonsterHPs] = useState([]);
   const [newTotalHP, setNewTotalHP] = useState(0);
 
   useEffect(() => {
-    setView("Battle");
+    console.log("user data battle line 16", props.userData);
     if (props.userData !== undefined) {
       let previousHP = 0;
       let temp0 = [];
@@ -38,31 +38,35 @@ function BattleContainer(props) {
             temp[i] = 0;
           }
         }
-        let alive = 0;
-        let dead = 0;
-        for (const monster of temp) {
-          if (monster === 0) {
-            dead++;
-          } else {
-            alive++;
+
+        if (temp.length > 0) {
+          let alive = 0;
+          let dead = 0;
+          console.log("temp", temp);
+          for (const monster of temp) {
+            if (monster === 0) {
+              dead++;
+            } else {
+              alive++;
+            }
           }
+          setNumAlive(alive);
+          setNumDead(dead);
+          setMonsterHPs(temp);
+          console.log("num alive", numAlive);
+          console.log("num dead", numDead);
         }
-        setNumAlive(alive);
-        setNumDead(dead);
-        setMonsterHPs(temp);
       } else {
         setMonsterHPs(temp0);
         setNumDead(0);
         setNumAlive(props.userData.level);
       }
     }
-  }, [props.userData, view]);
+  }, [props.userData, view, props.userView]);
+  console.log("num alive", numAlive);
+  console.log("num dead", numDead);
 
   useEffect(() => {
-    if (props.userData !== undefined && newTotalHP === 0) {
-      setView("victory");
-      return;
-    }
     const temp = monsterHPs.map((mon) => mon);
     let HPpreAttack = 0;
     monsterHPs.forEach((hp) => {
@@ -80,28 +84,39 @@ function BattleContainer(props) {
         temp[i] = 0;
       }
     }
-    let alive = 0;
-    let dead = 0;
-    for (const monster of temp) {
-      if (monster === 0) {
-        dead++;
-      } else {
-        alive++;
+
+    if (temp.length > 0) {
+      let alive = 0;
+      let dead = 0;
+      console.log("temp", temp);
+      for (const monster of temp) {
+        if (monster === 0) {
+          dead++;
+          console.log("deaddd", dead);
+        } else {
+          alive++;
+          console.log("aliiiive", alive);
+        }
       }
+      console.log("a", alive);
+      console.log("d", dead);
+      setNumAlive(alive);
+      setNumDead(dead);
+      setMonsterHPs(temp);
+      console.log("battle use effect line 90");
     }
-    setNumAlive(alive);
-    setNumDead(dead);
-    setMonsterHPs(temp);
   }, [newTotalHP]);
 
+  console.log("num alive", numAlive);
+  console.log("num dead", numDead);
   // console.log("the HPs", monsterHPs);
   // console.log("user info", props.userData);
   // console.log("remainingHP:", newTotalHP);
-  console.log("current battle view:", view);
+  //console.log("current battle view:", view);
 
   return (
     <section className="BattleContainer">
-      {view === "Battle" && (
+      {view === "battle" && (
         <section>
           Oh no! Plasforms!
           <br></br>
@@ -119,6 +134,7 @@ function BattleContainer(props) {
       )}
       {view === "victory" && (
         <VictoryScreen
+          view={view}
           setView={setView}
           userData={props.userData}
           setUserData={props.setUserData}

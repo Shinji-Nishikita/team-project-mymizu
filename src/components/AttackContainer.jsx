@@ -18,27 +18,31 @@ function AttackContainer(props) {
       size: size,
     });
 
-    apiFetch(size)
+    apiFetch(size);
 
     if (req.data.msg.includes("defeated")) {
-      props.setNewTotalHP(0);
+      props.setView("victory");
     } else {
       props.setNewTotalHP(req.data.monsterHP);
     }
   };
 
-  async function apiFetch(){
-    let amount ;
-    size === 1 ? amount = 350 : size === 2 ? amount = 500 : amount = 750;
+  async function apiFetch() {
+    let amount;
+    size === 1 ? (amount = 350) : size === 2 ? (amount = 500) : (amount = 750);
     try {
-      await axios.post('https://my-mizu-dev2-gen8n.ondigitalocean.app/dev-api/refills', {amount, tap_id: 1})
-    } catch (err){
+      await axios.post(
+        "https://my-mizu-dev2-gen8n.ondigitalocean.app/dev-api/refills",
+        { amount, tap_id: 1 }
+      );
+    } catch (err) {
       console.log(err);
     }
-    let backReq = await axios.get(`${process.env.REACT_APP_URL}/user/${props.userData.username}`)
-    props.setUserData(backReq.data)
+    let backReq = await axios.get(
+      `${process.env.REACT_APP_URL}/user/${props.userData.username}`
+    );
+    props.setUserData(backReq.data);
   }
-
 
   return (
     <section className="AttackContainer">

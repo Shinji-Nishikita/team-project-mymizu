@@ -24,6 +24,8 @@ function App() {
     getInfo();
   }, [userID]);
 
+  console.log("app level", userView);
+
   return (
     <div className="App">
       {userID === "" ? (
@@ -37,6 +39,7 @@ function App() {
               userData={userData}
               setUserData={setUserData}
               userView={userView}
+              setUserView={setUserView}
             />
           )}
           {userView === "Stats" && <StatsContainer userData={userData} />}

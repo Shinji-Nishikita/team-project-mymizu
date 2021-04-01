@@ -8,7 +8,7 @@ function VictoryScreen(props) {
       .then((x) => {
         props.setUserData(x.data);
       });
-    props.setView("Battle");
+    props.setView("battle");
     props.setMonsterHPs([]);
   };
 
