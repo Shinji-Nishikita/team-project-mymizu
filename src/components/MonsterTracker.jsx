@@ -1,6 +1,7 @@
 import "../styles/MonsterTracker.css";
 
 function MonsterTracker(props) {
+  console.log("tracker", props);
   const lifeElems = [];
   if (props.numDead === 0) {
     for (let i = 0; i < props.numAlive; i++) {
