@@ -1,5 +1,5 @@
 import "../styles/MonsterBox.css";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Monster from "./Monster";
 
 function MonsterBox({ monsterHPs}) {
@@ -12,6 +12,14 @@ function MonsterBox({ monsterHPs}) {
       setCurrentMonster(++currentMonster)
     }
   }
+
+  useEffect(() => {
+    let i = 0; 
+    while (monsterHPs[i] === 0){
+      i++
+    }
+    setCurrentMonster(i)
+  }, [monsterHPs])
 
   return (
     <section className="monsterBox">
