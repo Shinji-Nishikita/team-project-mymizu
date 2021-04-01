@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../styles/AttackContainer.css";
 import Button from "./Button";
+
+axios.defaults.headers.common["Authorization"] = process.env.REACT_APP_API_KEY;
+
 function AttackContainer(props) {
   const [size, setSize] = useState(null);
 
   const attack = async (e) => {
-    console.log("current size", size);
-    // patch
     let attackUrl =
       process.env.REACT_APP_URL +
       "/user/" +
@@ -16,13 +17,28 @@ function AttackContainer(props) {
     const req = await axios.patch(attackUrl, {
       size: size,
     });
-    console.log("response:", req.data);
+
+    apiFetch(size)
+
     if (req.data.msg.includes("defeated")) {
       props.setNewTotalHP(0);
     } else {
       props.setNewTotalHP(req.data.monsterHP);
     }
   };
+
+  async function apiFetch(){
+    let amount ;
+    size === 1 ? amount = 350 : size === 2 ? amount = 500 : amount = 750;
+    try {
+      await axios.post('https://my-mizu-dev2-gen8n.ondigitalocean.app/dev-api/refills', {amount, tap_id: 1})
+    } catch (err){
+      console.log(err);
+    }
+    let backReq = await axios.get(`${process.env.REACT_APP_URL}/user/${props.userData.username}`)
+    props.setUserData(backReq.data)
+  }
+
 
   return (
     <section className="AttackContainer">

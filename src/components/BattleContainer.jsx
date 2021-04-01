@@ -93,9 +93,9 @@ function BattleContainer(props) {
     setMonsterHPs(temp);
   }, [newTotalHP]);
 
-  console.log("the HPs", monsterHPs);
-  console.log("user info", props.userData);
-  console.log("remainingHP:", newTotalHP);
+  // console.log("the HPs", monsterHPs);
+  // console.log("user info", props.userData);
+  // console.log("remainingHP:", newTotalHP);
 
   return (
     <section className="BattleContainer">
@@ -109,6 +109,7 @@ function BattleContainer(props) {
           <MonsterBox userData={props.userData} monsterHPs={monsterHPs} />
           <AttackContainer
             userData={props.userData}
+            setUserData={props.setUserData}
             setView={setView}
             setNewTotalHP={setNewTotalHP}
           />

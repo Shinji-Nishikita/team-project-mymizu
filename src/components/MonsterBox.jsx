@@ -15,7 +15,7 @@ function MonsterBox({ monsterHPs}) {
 
   return (
     <section className="monsterBox">
-      {monsterHPs.map((v,i)=> <Monster monsterHP={v} currentMonster={currentMonster} thisMonster={i} key={v} monsterHPs={monsterHPs}/>)}
+      {monsterHPs.map((v,i)=> <Monster monsterHP={v} currentMonster={currentMonster} thisMonster={i} key={(v + 1 * 13) / 7} monsterHPs={monsterHPs}/>)}
       <div>
         {currentMonster > 0 && <button onMouseUp={(e)=>{changeMonster(e)}}>Previous</button>}
         {currentMonster < monsterHPs.length -1 && <button onMouseUp={(e)=>{changeMonster(e)}}>Next</button>}

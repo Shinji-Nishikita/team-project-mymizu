@@ -1,11 +1,6 @@
-// import {useEffect} from "react";
 import "../styles/StatsContainer.css";
 
 function StatsContainer({userData}) {
-
-  // useEffect(()=>{
-  //   console.log(userData)
-  // }, [])
 
   return <section className="StatsContainer">
   <form>
