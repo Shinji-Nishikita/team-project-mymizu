@@ -1,24 +1,32 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import "../styles/AttackContainer.css";
 import Button from './Button'
-function AttackContainer() {
-  const changeColor = () => { }
+function AttackContainer(props) {
+  const [size, setSize] = useState(null)
+
+  const attack = async (e) => {
+    e.target.style.background = "red"
+    // patch
+    let attackUrl = process.env.REACT_APP_URL + "/user/" + props.userData.username + "/attack"
+    const req = await axios.patch(attackUrl, {
+      size: size
+    });
+  };
+
+  useEffect(() => {
+
+  })
+
   return <section className="AttackContainer">
-    {/* <section> */}
-      <Button AttackAmount={350}/>
-      <Button AttackAmount={500}/>
-      <Button AttackAmount={750}/>
-      {/* <button
-        style={{ color: "black" }}
-        onClick={(e) => {
-          console.log("e.target.color", e.target)
-          e.target.style.color = "red"
-        }}
-      >350</button>
-      <button>500</button>
-      <button>other</button>
+    <section>
+      <Button AttackAmount={350} setSize={setSize} />
+      <Button AttackAmount={500} setSize={setSize} />
+      <Button AttackAmount={750} setSize={setSize} />
     </section>
     <button
-      onClick={() => { }}>Attack</button> */}
+      style={{ background: "" }}
+      onClick={(e) => attack(e)}>Attack</button>
   </section>
 }
 
