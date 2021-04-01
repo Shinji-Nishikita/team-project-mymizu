@@ -58,6 +58,10 @@ function BattleContainer(props) {
   }, [props.userData, view]);
 
   useEffect(() => {
+    if (newTotalHP === 0) {
+      setView("victory");
+      return;
+    }
     const temp = monsterHPs.map((mon) => mon);
     let HPpreAttack = 0;
     monsterHPs.forEach((hp) => {
