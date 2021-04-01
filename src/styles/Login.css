@@ -1,6 +1,11 @@
 .Login {
   background: #2e98d1;
   position: relative; /*相対位置*/
+  color: white;
+}
+
+a {
+  color: white;
 }
 
 .username {
@@ -12,4 +17,9 @@
 .signIn {
   height: 2em;
   --padding-x: 0.5em;
+}
+
+.accountAlert {
+  padding-top: 3px;
+  padding-bottom: 5px;
 }

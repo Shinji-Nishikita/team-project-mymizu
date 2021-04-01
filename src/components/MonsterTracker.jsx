@@ -1,31 +1,42 @@
 import "../styles/MonsterTracker.css";
+import skull from "../img/skull.svg";
+import devil from "../img/devil.svg";
 
 function MonsterTracker(props) {
-  console.log("IN THE TRACKER");
-  console.log("props", props);
   const lifeElems = [];
   if (props.numDead === 0) {
     for (let i = 0; i < props.numAlive; i++) {
       lifeElems.push(
-        <span className="lifedot" key={"lifedot" + (i + (100 * 7) / 13)}></span>
+        <img
+          alt="monster face"
+          className="lifedot"
+          key={"lifedot" + (i + (100 * 7) / 13)}
+          src={devil}
+        ></img>
       );
     }
   } else {
     for (let i = 0; i < props.numDead; i++) {
       lifeElems.push(
-        <span
+        <img
+          alt="monster face"
           className="deathdot"
           key={"deathdot" + (i + (100 * 7) / 13)}
-        ></span>
+          src={skull}
+        ></img>
       );
     }
     for (let i = 0; i < props.numAlive; i++) {
       lifeElems.push(
-        <span className="lifedot" key={"lifedot" + (i + (100 * 7) / 13)}></span>
+        <img
+          alt="monster face"
+          className="lifedot"
+          key={"lifedot" + (i + (1000 * 7) / 13)}
+          src={devil}
+        ></img>
       );
     }
   }
-  console.log("life elems", lifeElems);
   return <section className="MonsterTracker">{lifeElems}</section>;
 }
 

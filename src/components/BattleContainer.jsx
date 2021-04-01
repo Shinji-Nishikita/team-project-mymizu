@@ -13,7 +13,6 @@ function BattleContainer(props) {
   const [newTotalHP, setNewTotalHP] = useState(0);
 
   useEffect(() => {
-    console.log("user data battle line 16", props.userData);
     if (props.userData !== undefined) {
       let previousHP = 0;
       let temp0 = [];
@@ -42,7 +41,6 @@ function BattleContainer(props) {
         if (temp.length > 0) {
           let alive = 0;
           let dead = 0;
-          console.log("temp", temp);
           for (const monster of temp) {
             if (monster === 0) {
               dead++;
@@ -53,8 +51,6 @@ function BattleContainer(props) {
           setNumAlive(alive);
           setNumDead(dead);
           setMonsterHPs(temp);
-          console.log("num alive", numAlive);
-          console.log("num dead", numDead);
         }
       } else {
         setMonsterHPs(temp0);
@@ -63,8 +59,6 @@ function BattleContainer(props) {
       }
     }
   }, [props.userData, view, props.userView]);
-  console.log("num alive", numAlive);
-  console.log("num dead", numDead);
 
   useEffect(() => {
     const temp = monsterHPs.map((mon) => mon);
@@ -88,7 +82,6 @@ function BattleContainer(props) {
     if (temp.length > 0) {
       let alive = 0;
       let dead = 0;
-      console.log("temp", temp);
       for (const monster of temp) {
         if (monster === 0) {
           dead++;
@@ -98,21 +91,11 @@ function BattleContainer(props) {
           console.log("aliiiive", alive);
         }
       }
-      console.log("a", alive);
-      console.log("d", dead);
       setNumAlive(alive);
       setNumDead(dead);
       setMonsterHPs(temp);
-      console.log("battle use effect line 90");
     }
   }, [newTotalHP]);
-
-  console.log("num alive", numAlive);
-  console.log("num dead", numDead);
-  // console.log("the HPs", monsterHPs);
-  // console.log("user info", props.userData);
-  // console.log("remainingHP:", newTotalHP);
-  //console.log("current battle view:", view);
 
   return (
     <section className="BattleContainer">

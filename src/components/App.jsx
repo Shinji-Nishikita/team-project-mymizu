@@ -24,8 +24,6 @@ function App() {
     getInfo();
   }, [userID]);
 
-  console.log("app level", userView);
-
   return (
     <div className="App">
       {userID === "" ? (
@@ -43,6 +41,20 @@ function App() {
             />
           )}
           {userView === "Stats" && <StatsContainer userData={userData} />}
+          <footer className="foot">
+            Skull & Monster Face icons made by{" "}
+            <a href="https://www.freepik.com" title="Freepik">
+              Freepik
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>{" "}
+            || Plastic Monster image sourced from{" "}
+            <a href="https://www.h0rse.com/greenpeace-plastic-monster/">
+              h0rse/greenpeace
+            </a>
+          </footer>
         </section>
       )}
     </div>
