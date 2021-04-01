@@ -13,7 +13,7 @@ function App() {
   const [userData, setUserData] = useState();
 
   useEffect(() => {
-    if(!userID) return
+    if (!userID) return;
     async function getInfo() {
       await axios
         .get(process.env.REACT_APP_URL + "/user/" + userID)
@@ -32,8 +32,10 @@ function App() {
       ) : (
         <section>
           <Navbar setUserView={setUserView} />
-          {userView === "Map" && <MapContainer user={userID}/>}
-          {userView === "Battle" && <BattleContainer userData={userData} />}
+          {userView === "Map" && <MapContainer user={userID} />}
+          {userView === "Battle" && (
+            <BattleContainer userData={userData} setUserData={setUserData} />
+          )}
           {userView === "Stats" && <StatsContainer userData={userData} />}
         </section>
       )}
