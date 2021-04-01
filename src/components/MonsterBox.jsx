@@ -1,29 +1,16 @@
 import "../styles/MonsterBox.css";
-import {useEffect, useState, useRef} from 'react';
+import {useState} from 'react';
 import Monster from "./Monster";
 
-function MonsterBox({userData, monsterHPs}) {
-  const [monsterComp, setMonsterComp] = useState([]);
+function MonsterBox({ monsterHPs}) {
   let [currentMonster, setCurrentMonster] = useState(0)
-
-  useEffect(()=>{
-    if(monsterHPs.length < 1) return
-    const temp = [];
-    console.log(monsterHPs)
-    for (let i = 0; i < monsterHPs.length; i++){
-      const HP = monsterHPs[i]
-      console.log(HP)
-      temp.push(<Monster monsterHP={HP} thisMonster={i} currentMonster={currentMonster}/>)
-    }
-    setMonsterComp(temp)
-  }, [monsterHPs])
 
   return (
     <section className="monsterBox">
-      {monsterComp}
+      {monsterHPs.map((v,i)=> <Monster monsterHP={v} currentMonster={currentMonster} thisMonster={i} key={v} monsterHPs={monsterHPs}/>)}
       <div>
-        <button onClick={()=>{setCurrentMonster(currentMonster--)}}>Last</button>
-        <button onClick={()=>{setCurrentMonster(currentMonster++)}}>Next</button>
+        <button onMouseUp={()=>{setCurrentMonster(currentMonster--)}}>Last</button>
+        <button onMouseUp={()=>{setCurrentMonster(currentMonster++)}}>Next</button>
       </div>
     </section>
   );

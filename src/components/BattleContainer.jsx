@@ -56,10 +56,6 @@ function BattleContainer(props) {
     setNumDead(dead);
   }, [monsterHPs]);
 
-  // console.log("alive", numAlive, "dead", numDead);
-
-  // console.log(monsterHPs);
-
   return (
     <section className="BattleContainer">
       battle container
