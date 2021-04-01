@@ -23,7 +23,6 @@ function App() {
     }
     getInfo();
   }, [userID]);
-  // console.log(userData);
 
   return (
     <div className="App">

@@ -58,7 +58,7 @@ function BattleContainer(props) {
   }, [props.userData, view]);
 
   useEffect(() => {
-    if (newTotalHP === 0) {
+    if (props.userData !== undefined && newTotalHP === 0) {
       setView("victory");
       return;
     }
