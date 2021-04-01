@@ -24,6 +24,8 @@ function App() {
     getInfo();
   }, [userID]);
 
+  console.log("app level", userView);
+
   return (
     <div className="App">
       {userID === "" ? (
@@ -33,7 +35,12 @@ function App() {
           <Navbar setUserView={setUserView} />
           {userView === "Map" && <MapContainer user={userID} />}
           {userView === "Battle" && (
-            <BattleContainer userData={userData} setUserData={setUserData} />
+            <BattleContainer
+              userData={userData}
+              setUserData={setUserData}
+              userView={userView}
+              setUserView={setUserView}
+            />
           )}
           {userView === "Stats" && <StatsContainer userData={userData} />}
         </section>
