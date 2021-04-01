@@ -7,7 +7,8 @@ function Login(props) {
     user = e.target.value;
   };
   const handleSignIn = async () => {
-    const req = await axios.post(process.env.REACT_APP_URL + "/login", {
+    // const req = 
+    await axios.post(process.env.REACT_APP_URL + "/login", {
       username: user,
     });
     props.setUserID(user);

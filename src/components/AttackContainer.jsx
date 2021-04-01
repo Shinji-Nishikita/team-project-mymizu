@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/AttackContainer.css";
-import Button from "./Button";
 
 axios.defaults.headers.common["Authorization"] = process.env.REACT_APP_API_KEY;
 
 function AttackContainer(props) {
   const [size, setSize] = useState(null);
+  const [buttonColors, setButtonColors] = useState({ b1: "", b2: "", b3: "" });
 
   const attack = async (e) => {
     let attackUrl =
@@ -44,14 +44,36 @@ function AttackContainer(props) {
     props.setUserData(backReq.data);
   }
 
+  const sizeSelect = (e) => {
+    let size;
+    let AttackAmount = e.target.innerText;
+    if (AttackAmount == 350) {
+      size = 1;
+      setButtonColors({ b1: "active", b2: "", b3: "" });
+    } else if (AttackAmount == 500) {
+      size = 2;
+      setButtonColors({ b1: "", b2: "active", b3: "" });
+    } else if (AttackAmount == 750) {
+      size = 3;
+      setButtonColors({ b1: "", b2: "", b3: "active" });
+    }
+    setSize(size);
+  };
+
   return (
     <section className="AttackContainer">
       <section>
         {"H20 Refill power (ml)"}
         <br></br>
-        <Button AttackAmount={350} setSize={setSize} />
-        <Button AttackAmount={500} setSize={setSize} />
-        <Button AttackAmount={750} setSize={setSize} />
+        <button onClick={sizeSelect} className={buttonColors.b1}>
+          350
+        </button>
+        <button onClick={sizeSelect} className={buttonColors.b2}>
+          500
+        </button>
+        <button onClick={sizeSelect} className={buttonColors.b3}>
+          750
+        </button>
       </section>
       <button className="attackButton" onClick={(e) => attack(e)}>
         H20 Refill Attack

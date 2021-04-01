@@ -6,3 +6,7 @@
 .attackButton:hover {
   background-color: red;
 }
+
+.active {
+  background: #BADA55;
+}
