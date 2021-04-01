@@ -1,0 +1,15 @@
+.Login {
+  background: #2e98d1;
+  position: relative; /*相対位置*/
+}
+
+.username {
+  width: 20%;
+  height: 2em;
+  --padding-x: 0.5em;
+}
+
+.signIn {
+  height: 2em;
+  --padding-x: 0.5em;
+}
