@@ -10,6 +10,7 @@ function BattleContainer(props) {
   const [numAlive, setNumAlive] = useState();
   const [numDead, setNumDead] = useState();
   const [monsterHPs, setMonsterHPs] = useState([]);
+  const [newTotalHP, setNewTotalHP] = useState(0);
 
   useEffect(() => {
     if (props.userData !== undefined) {
@@ -38,7 +39,6 @@ function BattleContainer(props) {
         }
         let alive = 0;
         let dead = 0;
-        console.log("max != current");
         for (const monster of temp) {
           if (monster === 0) {
             dead++;
@@ -57,13 +57,61 @@ function BattleContainer(props) {
     }
   }, [props.userData, view]);
 
+  useEffect(() => {
+    if (props.userData !== undefined && newTotalHP === 0) {
+      setView("victory");
+      return;
+    }
+    const temp = monsterHPs.map((mon) => mon);
+    let HPpreAttack = 0;
+    monsterHPs.forEach((hp) => {
+      HPpreAttack += hp;
+    });
+    let remainingDamage = HPpreAttack - newTotalHP;
+    for (let i = 0; i < temp.length; i++) {
+      temp[i] = temp[i] - remainingDamage;
+      if (temp[i] >= 0) {
+        remainingDamage = 0;
+        break;
+      }
+      if (temp[i] < 0) {
+        remainingDamage = temp[i] * -1;
+        temp[i] = 0;
+      }
+    }
+    let alive = 0;
+    let dead = 0;
+    for (const monster of temp) {
+      if (monster === 0) {
+        dead++;
+      } else {
+        alive++;
+      }
+    }
+    setNumAlive(alive);
+    setNumDead(dead);
+    setMonsterHPs(temp);
+  }, [newTotalHP]);
+
+  console.log("the HPs", monsterHPs);
+  console.log("user info", props.userData);
+  console.log("remainingHP:", newTotalHP);
+
   return (
     <section className="BattleContainer">
       {view === "battle" && (
         <section>
+          Oh no! Plasforms!
+          <br></br>
+          Refill your water bottle so they have less plastic!
+          <br></br>
           <MonsterTracker numAlive={numAlive} numDead={numDead} />
           <MonsterBox userData={props.userData} monsterHPs={monsterHPs} />
-          <AttackContainer userData={props.userData} setView={setView} />
+          <AttackContainer
+            userData={props.userData}
+            setView={setView}
+            setNewTotalHP={setNewTotalHP}
+          />
         </section>
       )}
       {view === "victory" && (
