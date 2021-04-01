@@ -15,10 +15,14 @@ function Login(props) {
   };
   return (
     <section className="Login">
-      login
-      <input type="text" className="username" onKeyUp={setUser}></input>
+      <input
+        type="text"
+        placeholder="enter your user name"
+        className="username"
+        onKeyUp={setUser}
+      ></input>
       <button className="signIn" onClick={handleSignIn}>
-        Sign In
+        <p>Tap to start 🎮</p>
       </button>
     </section>
   );
