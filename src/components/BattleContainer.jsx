@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles/BattleContainer.css";
 import MonsterTracker from "./MonsterTracker";
-import Monster from "./Monster";
+import MonsterBox from "./MonsterBox";
 import AttackContainer from "./AttackContainer";
 import VictoryScreen from "./VictoryScreen";
 
 function BattleContainer(props) {
-  const [view, setView] = useState("victory");
+  const [view, setView] = useState("battle");
   const [numAlive, setNumAlive] = useState();
   const [numDead, setNumDead] = useState();
   const [monsterHPs, setMonsterHPs] = useState([]);
@@ -65,7 +65,7 @@ function BattleContainer(props) {
       {view === "battle" && (
         <section>
           <MonsterTracker numAlive={numAlive} numDead={numDead} />
-          <Monster userData={props.userData} />
+          <MonsterBox userData={props.userData} monsterHPs={monsterHPs} />
           <AttackContainer userData={props.userData} setView={setView} />
         </section>
       )}
