@@ -33,7 +33,11 @@ function App() {
           <Navbar setUserView={setUserView} />
           {userView === "Map" && <MapContainer user={userID} />}
           {userView === "Battle" && (
-            <BattleContainer userData={userData} setUserData={setUserData} />
+            <BattleContainer
+              userData={userData}
+              setUserData={setUserData}
+              userView={userView}
+            />
           )}
           {userView === "Stats" && <StatsContainer userData={userData} />}
         </section>

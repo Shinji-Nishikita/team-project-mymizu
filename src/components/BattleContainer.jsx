@@ -6,13 +6,14 @@ import AttackContainer from "./AttackContainer";
 import VictoryScreen from "./VictoryScreen";
 
 function BattleContainer(props) {
-  const [view, setView] = useState("battle");
+  const [view, setView] = useState();
   const [numAlive, setNumAlive] = useState();
   const [numDead, setNumDead] = useState();
   const [monsterHPs, setMonsterHPs] = useState([]);
   const [newTotalHP, setNewTotalHP] = useState(0);
 
   useEffect(() => {
+    setView("Battle");
     if (props.userData !== undefined) {
       let previousHP = 0;
       let temp0 = [];
@@ -96,10 +97,11 @@ function BattleContainer(props) {
   // console.log("the HPs", monsterHPs);
   // console.log("user info", props.userData);
   // console.log("remainingHP:", newTotalHP);
+  console.log("current battle view:", view);
 
   return (
     <section className="BattleContainer">
-      {view === "battle" && (
+      {view === "Battle" && (
         <section>
           Oh no! Plasforms!
           <br></br>
