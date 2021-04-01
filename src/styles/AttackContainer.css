@@ -1,4 +1,8 @@
-.AttackContainer{
-  display:flex;
-  justify-content:space-around;
+.AttackContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.attackButton:hover {
+  background-color: red;
 }
