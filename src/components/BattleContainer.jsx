@@ -38,7 +38,6 @@ function BattleContainer(props) {
         }
         let alive = 0;
         let dead = 0;
-        console.log("max != current");
         for (const monster of temp) {
           if (monster === 0) {
             dead++;
