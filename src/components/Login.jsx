@@ -21,15 +21,19 @@ function Login(props) {
   };
   return (
     <section className="Login">
+      <h2 className="appName">BlasMizu</h2>
       <input
         type="text"
         placeholder="enter your user name"
         className="username"
         onKeyUp={setUser}
       ></input>
+      <br></br>
       <button className="signIn" onClick={handleSignIn}>
-        Tap to start 🎮
+        Tap to start
       </button>
+      <br></br>
+      <p className="controller">🎮</p>
       {needAccount && (
         <p className="accountAlert">
           You must log in with an existing mymizu username.
