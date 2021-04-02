@@ -23,7 +23,7 @@ function MonsterBox({ monsterHPs }) {
   }, [monsterHPs]);
 
   return (
-    <section className="monsterBox" style={{ width: "100%" }}>
+    <section className="monsterBox" style={{ width: "100%", objectFit:'fill'}}>
       {monsterHPs.map((v, i) => (
         <Monster
           monsterHP={v}
@@ -44,7 +44,7 @@ function MonsterBox({ monsterHPs }) {
             Previous Monster
           </button>
         )}
-        {currentMonster < monsterHPs.length && (
+        {currentMonster < monsterHPs.length - 1 && (
           <button
             className="changeMonButton"
             onMouseUp={(e) => {
