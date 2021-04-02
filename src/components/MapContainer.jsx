@@ -41,7 +41,6 @@ function MapContainer({ user }) {
     const temp = [];
     if (pins.length === 0) return;
     for (let pinInfo of pins.taps) {
-      // console.log(pinInfo)
       temp.push(
         <Pin pinInfo={pinInfo} lat={pinInfo.latitude} lng={pinInfo.longitude} key={pinInfo.name}/>
       );

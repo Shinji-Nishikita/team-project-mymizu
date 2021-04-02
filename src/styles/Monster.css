@@ -1,3 +1,10 @@
 .img{
   transition: "height 2s";
 }
+
+.monsterHP{
+  font-size: large;
+  font-style: oblique;
+  border-style: solid;
+  border-color: black;
+}

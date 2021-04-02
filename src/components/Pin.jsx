@@ -10,8 +10,11 @@ export default function Pin({ pinInfo }) {
         style={{ width: "30px", height: "35px" }}
         src="https://i.ibb.co/q1Y3SpK/oie-jx-XJXNBTAk-Ti.png"
         alt="logo"
-        onClick={() => {
+        onMouseEnter={() => {
           setClicked(!clicked);
+        }}
+        onMouseOut={()=>{
+          setClicked(!clicked)
         }}
       ></img>
       {clicked && (
