@@ -23,7 +23,7 @@ function MonsterBox({ monsterHPs }) {
   }, [monsterHPs]);
 
   return (
-    <section className="monsterBox" style={{ width: "100vh" }}>
+    <section className="monsterBox" style={{ width: "100%" }}>
       {monsterHPs.map((v, i) => (
         <Monster
           monsterHP={v}

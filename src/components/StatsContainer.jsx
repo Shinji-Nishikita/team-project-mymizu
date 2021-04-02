@@ -9,7 +9,7 @@ function StatsContainer({userData}) {
     <div><b>Level: </b>{userData.level}</div>
     <div><b>Attack Power: </b>{userData.attackPower}</div>
     <div><b>Total refills: </b>{userData.refill_count}</div>
-    <div><b>Refills amount: </b>{userData.refill_amount}</div>
+    <div><b>Refills amount: </b>{userData.refill_amount}ml</div>
   </form>
   </section>;
 }
