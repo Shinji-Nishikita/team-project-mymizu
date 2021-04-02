@@ -101,10 +101,10 @@ function BattleContainer(props) {
     <section className="BattleContainer">
       {view === "battle" && (
         <section>
-          Oh no! Plasforms!
-          <br></br>
-          Refill your water bottle so they have less plastic!
-          <br></br>
+          <p className="battleText">Oh no! Plasforms!</p>
+          <p className="battleText">
+            Refill your water bottle so they have less plastic!
+          </p>
           <MonsterTracker numAlive={numAlive} numDead={numDead} />
           <MonsterBox userData={props.userData} monsterHPs={monsterHPs} />
           <AttackContainer
