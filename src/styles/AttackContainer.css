@@ -1,7 +1,6 @@
 .AttackContainer {
   display: flex;
   justify-content: space-around;
-  overflow: auto;
 }
 
 .sizeText {
