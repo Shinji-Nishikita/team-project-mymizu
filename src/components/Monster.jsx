@@ -1,5 +1,6 @@
 import React from "react";
 import img from "../img/plastic_monster.png";
+import '../styles/Monster.css'
 export default function Monster({ monsterHP, currentMonster, thisMonster, monsterHPs }) {
   const percent = (monsterHP /monsterHPs[monsterHPs.length - 1 ]) * 100
   if (currentMonster === thisMonster) {
