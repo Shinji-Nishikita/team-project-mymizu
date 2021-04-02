@@ -63,15 +63,14 @@ function AttackContainer(props) {
   return (
     <section className="AttackContainer">
       <section>
-        {"H20 Refill power (ml)"}
-        <br></br>
-        <button onClick={sizeSelect} className={buttonColors.b1}>
+        <p className="sizeText">H20 Refill power (ml)</p>
+        <button id="b350" onClick={sizeSelect} className={buttonColors.b1}>
           350
         </button>
-        <button onClick={sizeSelect} className={buttonColors.b2}>
+        <button id="b500" onClick={sizeSelect} className={buttonColors.b2}>
           500
         </button>
-        <button onClick={sizeSelect} className={buttonColors.b3}>
+        <button id="b750" onClick={sizeSelect} className={buttonColors.b3}>
           750
         </button>
       </section>
