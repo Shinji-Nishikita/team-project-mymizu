@@ -7,7 +7,7 @@ function MonsterBox({ monsterHPs }) {
   let [currentMonster, setCurrentMonster] = useState(0);
 
   function changeMonster(e) {
-    if (e.target.innerText === "Previous") {
+    if (e.target.innerText === "Previous Monster") {
       setCurrentMonster(--currentMonster);
     } else {
       setCurrentMonster(++currentMonster);
@@ -44,7 +44,7 @@ function MonsterBox({ monsterHPs }) {
             Previous Monster
           </button>
         )}
-        {currentMonster < monsterHPs.length - 1 && (
+        {currentMonster < monsterHPs.length && (
           <button
             className="changeMonButton"
             onMouseUp={(e) => {
