@@ -1,6 +1,7 @@
 import "../styles/MonsterBox.css";
 import { useState, useEffect } from "react";
 import Monster from "./Monster";
+import { v4 as uuidv4 } from "uuid";
 
 function MonsterBox({ monsterHPs }) {
   let [currentMonster, setCurrentMonster] = useState(0);
@@ -22,13 +23,13 @@ function MonsterBox({ monsterHPs }) {
   }, [monsterHPs]);
 
   return (
-    <section className="monsterBox">
+    <section className="monsterBox" style={{ width: "100vh" }}>
       {monsterHPs.map((v, i) => (
         <Monster
           monsterHP={v}
           currentMonster={currentMonster}
           thisMonster={i}
-          key={(v + 1 * 13) / 7}
+          key={uuidv4()}
           monsterHPs={monsterHPs}
         />
       ))}

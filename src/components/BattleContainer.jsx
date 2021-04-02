@@ -85,10 +85,10 @@ function BattleContainer(props) {
       for (const monster of temp) {
         if (monster === 0) {
           dead++;
-          console.log("deaddd", dead);
+          // console.log("deaddd", dead);
         } else {
           alive++;
-          console.log("aliiiive", alive);
+          // console.log("aliiiive", alive);
         }
       }
       setNumAlive(alive);
