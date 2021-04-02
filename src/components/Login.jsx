@@ -1,17 +1,23 @@
+import React, { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css";
 
 function Login(props) {
+  const [needAccount, setNeedAccount] = useState(false);
   let user = "";
   const setUser = (e) => {
     user = e.target.value;
   };
   const handleSignIn = async () => {
-    // const req = 
-    await axios.post(process.env.REACT_APP_URL + "/login", {
+    const req = await axios.post(process.env.REACT_APP_URL + "/login", {
       username: user,
     });
-    props.setUserID(user);
+
+    if (req.data.msg.includes("mizu")) {
+      setNeedAccount(true);
+    } else {
+      props.setUserID(user);
+    }
   };
   return (
     <section className="Login">
@@ -24,6 +30,14 @@ function Login(props) {
       <button className="signIn" onClick={handleSignIn}>
         Tap to start 🎮
       </button>
+      {needAccount && (
+        <p className="accountAlert">
+          You must log in with an existing mymizu username.
+          <br></br>
+          Don't have a mymizu account? ➡ Create one{" "}
+          <a href="https://account.mymizu.co/register?r=">here</a>
+        </p>
+      )}
     </section>
   );
 }
