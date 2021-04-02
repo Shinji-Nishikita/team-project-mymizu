@@ -46,14 +46,14 @@ function AttackContainer(props) {
 
   const sizeSelect = (e) => {
     let size;
-    let AttackAmount = e.target.innerText;
-    if (AttackAmount == 350) {
+    let AttackAmount = +e.target.innerText;
+    if (AttackAmount === 350) {
       size = 1;
       setButtonColors({ b1: "active", b2: "", b3: "" });
-    } else if (AttackAmount == 500) {
+    } else if (AttackAmount === 500) {
       size = 2;
       setButtonColors({ b1: "", b2: "active", b3: "" });
-    } else if (AttackAmount == 750) {
+    } else if (AttackAmount === 750) {
       size = 3;
       setButtonColors({ b1: "", b2: "", b3: "active" });
     }

@@ -9,7 +9,7 @@ export default function Monster({ monsterHP, currentMonster, thisMonster, monste
         <img
           src={img}
           className="img"
-          height={percent + "px"}
+          width={percent + "%"}
           alt="monster"
         />
       </div>

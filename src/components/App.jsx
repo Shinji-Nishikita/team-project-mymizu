@@ -24,7 +24,7 @@ function App() {
     getInfo();
   }, [userID]);
 
-  console.log("app level", userView);
+  // console.log("app level", userView);
 
   return (
     <div className="App">

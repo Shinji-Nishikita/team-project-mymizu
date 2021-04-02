@@ -1,8 +1,8 @@
 import "../styles/MonsterTracker.css";
 
 function MonsterTracker(props) {
-  console.log("IN THE TRACKER");
-  console.log("props", props);
+  // console.log("IN THE TRACKER");
+  // console.log("props", props);
   const lifeElems = [];
   if (props.numDead === 0) {
     for (let i = 0; i < props.numAlive; i++) {
@@ -25,7 +25,7 @@ function MonsterTracker(props) {
       );
     }
   }
-  console.log("life elems", lifeElems);
+  // console.log("life elems", lifeElems);
   return <section className="MonsterTracker">{lifeElems}</section>;
 }
 
